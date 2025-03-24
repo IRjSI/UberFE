@@ -1,24 +1,43 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios';
+import { UserDataContext } from '../context/UserContext.jsx'
 
 function UserSignup() {
 
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [firstname, setFirstName] = useState('');
+  const [lastname, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userData, setUserData] = useState({});
 
-  const submitHandler = (e) => {
+  const navigate = useNavigate();
+
+  const { user, setUser } = useContext(UserDataContext);
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-    setUserData({
-      fullName: {
-        firstName,
-        lastName
+
+    const newUser = {
+      fullname: {
+        firstname,
+        lastname
       },
       email,
       password
-    })
+    }
+
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`, newUser)
+
+    if (response.status === 201) {
+      const data = response.data
+      
+
+      setUser(data.user)
+
+      navigate('/home')
+    }
+
     setFirstName('');
     setLastName('');
     setEmail('');
@@ -34,7 +53,7 @@ function UserSignup() {
           <h3 className='text-lg mb-2'>What's your name?</h3>
           <div className='flex gap-2'>
             <input 
-              value={firstName}
+              value={firstname}
               onChange={(e) => setFirstName(e.target.value)}
               className='rounded mb-7 bg-[#eeeeee] px-4 py-2 w-full text-lg placeholder:text-base'
               type="text" 
@@ -42,7 +61,7 @@ function UserSignup() {
               placeholder='First Name'
             />
             <input 
-              value={lastName}
+              value={lastname}
               onChange={(e) => setLastName(e.target.value)}
               className='rounded mb-7 bg-[#eeeeee] px-4 py-2 w-full text-lg placeholder:text-base'
               type="text" 
@@ -70,7 +89,7 @@ function UserSignup() {
           />
           <button 
             className='rounded mb-3 bg-[#111111] text-[#eeeeee] font-semibold px-4 py-2 w-full text-lg placeholder:text-base'
-          >Login</button>
+          >Signup</button>
 
         </form>
         <p className='text-center'>Already have an Account? <Link to='/login' className='text-blue-500'>Login here</Link></p>

@@ -70,7 +70,7 @@ function CaptainSignup() {
           />
           <button 
             className='rounded mb-3 bg-[#111111] text-[#eeeeee] font-semibold px-4 py-2 w-full text-lg placeholder:text-base'
-          >Login</button>
+          >Signup</button>
 
         </form>
         <p className='text-center'>Already a Captain? <Link to='/captain-login' className='text-blue-500'>Login here</Link></p>
