@@ -3,15 +3,14 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
-import UserLogin from './pages/UserLogin'
-import UserSignup from './pages/UserSignup'
-import CaptainSignup from './pages/CaptainSignup'
-import CaptainLogin from './pages/CaptainLogin'
+import Home from './pages/Home.jsx'
+import UserLogin from './pages/UserLogin.jsx'
+import UserSignup from './pages/UserSignup.jsx'
+import CaptainSignup from './pages/CaptainSignup.jsx'
+import CaptainLogin from './pages/CaptainLogin.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  
   return (
     <div>
       <Routes>
