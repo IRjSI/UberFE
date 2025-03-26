@@ -10,6 +10,7 @@ import UserProtectedWrapper from './pages/UserProtectedWrapper.jsx'
 import UserLogout from './pages/UserLogout.jsx'
 import CaptainHome from './pages/CaptainHome.jsx'
 import CaptainProtectedWrapper from './pages/CaptainProtectedWrapper.jsx'
+import CaptainLogout from './pages/CaptainLogout.jsx'
 
 function App() {
   

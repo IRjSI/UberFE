@@ -33,7 +33,7 @@ function UserSignup() {
       const data = response.data;
 
       setUser(data.user);
-      localStorage.setItem('token', JSON.stringify(data.token));
+      localStorage.setItem('token', data.token);
 
       navigate('/home');
     }
